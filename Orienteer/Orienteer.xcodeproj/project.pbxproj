@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		BB6C6AB01C0CB38300F0268D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AAF1C0CB38300F0268D /* AppDelegate.swift */; };
-		BB6C6AB21C0CB38300F0268D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AB11C0CB38300F0268D /* FirstViewController.swift */; };
-		BB6C6AB41C0CB38300F0268D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AB31C0CB38300F0268D /* SecondViewController.swift */; };
+		BB6C6AB21C0CB38300F0268D /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AB11C0CB38300F0268D /* CompassViewController.swift */; };
+		BB6C6AB41C0CB38300F0268D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AB31C0CB38300F0268D /* MapViewController.swift */; };
 		BB6C6AB71C0CB38300F0268D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C6AB51C0CB38300F0268D /* Main.storyboard */; };
 		BB6C6AB91C0CB38300F0268D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB6C6AB81C0CB38300F0268D /* Assets.xcassets */; };
 		BB6C6ABC1C0CB38300F0268D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C6ABA1C0CB38300F0268D /* LaunchScreen.storyboard */; };
 		BB6C6AC71C0CB38300F0268D /* OrienteerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AC61C0CB38300F0268D /* OrienteerTests.swift */; };
+		BB6C6AD21C0CB4EE00F0268D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +30,8 @@
 /* Begin PBXFileReference section */
 		BB6C6AAC1C0CB38300F0268D /* Orienteer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orienteer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6C6AAF1C0CB38300F0268D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BB6C6AB11C0CB38300F0268D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		BB6C6AB31C0CB38300F0268D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		BB6C6AB11C0CB38300F0268D /* CompassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassViewController.swift; sourceTree = "<group>"; };
+		BB6C6AB31C0CB38300F0268D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BB6C6AB61C0CB38300F0268D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB6C6AB81C0CB38300F0268D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB6C6ABB1C0CB38300F0268D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		BB6C6AC21C0CB38300F0268D /* OrienteerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrienteerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6C6AC61C0CB38300F0268D /* OrienteerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrienteerTests.swift; sourceTree = "<group>"; };
 		BB6C6AC81C0CB38300F0268D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				BB6C6AAF1C0CB38300F0268D /* AppDelegate.swift */,
-				BB6C6AB11C0CB38300F0268D /* FirstViewController.swift */,
-				BB6C6AB31C0CB38300F0268D /* SecondViewController.swift */,
+				BB6C6AB11C0CB38300F0268D /* CompassViewController.swift */,
+				BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */,
+				BB6C6AB31C0CB38300F0268D /* MapViewController.swift */,
 				BB6C6AB51C0CB38300F0268D /* Main.storyboard */,
 				BB6C6AB81C0CB38300F0268D /* Assets.xcassets */,
 				BB6C6ABA1C0CB38300F0268D /* LaunchScreen.storyboard */,
@@ -199,9 +202,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB6C6AB41C0CB38300F0268D /* SecondViewController.swift in Sources */,
+				BB6C6AB41C0CB38300F0268D /* MapViewController.swift in Sources */,
+				BB6C6AD21C0CB4EE00F0268D /* WeatherViewController.swift in Sources */,
 				BB6C6AB01C0CB38300F0268D /* AppDelegate.swift in Sources */,
-				BB6C6AB21C0CB38300F0268D /* FirstViewController.swift in Sources */,
+				BB6C6AB21C0CB38300F0268D /* CompassViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

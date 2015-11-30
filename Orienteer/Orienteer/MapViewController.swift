@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
 
@@ -20,6 +21,17 @@ class MapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    // MARK: Outlets
+    
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet {
+            mapView.mapType = .Satellite
+            mapView.pitchEnabled = false
+            let location = CLLocationCoordinate2D(latitude: 53.8073, longitude: -1.5517)
+            let region = MKCoordinateRegionMakeWithDistance(location, 1000.0, 1000.0)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
 }
 

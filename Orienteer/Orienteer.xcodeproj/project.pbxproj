@@ -83,8 +83,8 @@
 			children = (
 				BB6C6AAF1C0CB38300F0268D /* AppDelegate.swift */,
 				BB6C6AB11C0CB38300F0268D /* CompassViewController.swift */,
-				BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */,
 				BB6C6AB31C0CB38300F0268D /* MapViewController.swift */,
+				BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */,
 				BB6C6AB51C0CB38300F0268D /* Main.storyboard */,
 				BB6C6AB81C0CB38300F0268D /* Assets.xcassets */,
 				BB6C6ABA1C0CB38300F0268D /* LaunchScreen.storyboard */,
@@ -393,6 +393,7 @@
 				BB6C6ACD1C0CB38300F0268D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB6C6ACE1C0CB38300F0268D /* Build configuration list for PBXNativeTarget "OrienteerTests" */ = {
 			isa = XCConfigurationList;
@@ -401,6 +402,7 @@
 				BB6C6AD01C0CB38300F0268D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

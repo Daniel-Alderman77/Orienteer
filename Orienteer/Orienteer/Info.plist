@@ -46,5 +46,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Orienteer requires your location for map functionality</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Orienteer requires your location for map functionality</string>
 </dict>
 </plist>

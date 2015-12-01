@@ -9,16 +9,53 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
+    
+    let requiredAccuracy: CLLocationAccuracy = 100.0
+    
+    var locManager = CLLocationManager()
+    
+    var tryingToLocate = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Update location when view is open
+        print("Updating Location")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        // Stop updating location
+        super.viewWillDisappear(animated)
+        locManager.stopUpdatingHeading()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func couldBeLocatable() -> Bool {
+        if !CLLocationManager.locationServicesEnabled() {
+            // Location services not enabled but might be in future
+            return true
+        }
+        
+        let status = CLLocationManager.authorizationStatus()
+        
+        switch status {
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
+                return true
+            case .NotDetermined:
+                // Ask user for permission
+                locManager.requestWhenInUseAuthorization()
+                return true
+            case .Restricted, .Denied:
+                return false
+        }
     }
 
     // MARK: Outlets
@@ -34,4 +71,3 @@ class MapViewController: UIViewController {
     }
     
 }
-

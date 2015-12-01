@@ -50,5 +50,10 @@
 	<string>Orienteer requires your location for map functionality</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Orienteer requires your location for map functionality</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

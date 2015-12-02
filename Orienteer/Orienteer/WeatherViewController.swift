@@ -39,9 +39,12 @@ class WeatherViewController: UIViewController {
         var tempMax: Int?
         var temp: Int?
         var humidity: Int?
-        var sunrise: Int?
-        var sunset: Int?
+        var sunrise: String?
+        var sunset: String?
         var weatherDesc: String?
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
         
         if let json: NSDictionary = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
             if let name = json["name"] as? String {
@@ -58,8 +61,13 @@ class WeatherViewController: UIViewController {
                 humidity = main["humidity"] as? Int
             }
             if let sys = json["sys"] as? NSDictionary {
-                sunrise = sys["sunrise"] as? Int
-                sunset = sys["sunset"] as? Int
+                let sunriseDouble = sys["sunrise"] as? Double
+                let sunriseDate = NSDate(timeIntervalSince1970: sunriseDouble!)
+                sunrise = dateFormatter.stringFromDate(sunriseDate)
+                
+                let sunsetDouble = sys["sunset"] as? Double
+                let sunsetDate = NSDate(timeIntervalSince1970: sunsetDouble!)
+                sunset = dateFormatter.stringFromDate(sunsetDate)
             }
             
             if let weatherArray = json["weather"] as? NSArray {

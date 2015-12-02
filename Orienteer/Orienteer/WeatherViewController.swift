@@ -33,14 +33,52 @@ class WeatherViewController: UIViewController {
         let jsonData = response!.dataUsingEncoding(NSUTF8StringEncoding)
         
         var locationName: String?
+        var windSpeed: Double?
+        var windDirection: Int?
+        var tempMin: Int?
+        var tempMax: Int?
+        var temp: Int?
+        var humidity: Int?
+        var sunrise: Int?
+        var sunset: Int?
+        var weatherDesc: String?
         
         if let json: NSDictionary = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
-            if let value = json["name"] as? String {
-                locationName = value
+            if let name = json["name"] as? String {
+                locationName = name
+            }
+            if let wind = json["wind"] as? NSDictionary {
+                windSpeed = wind["speed"] as? Double
+                windDirection = wind["deg"] as? Int
+            }
+            if let main = json["main"] as? NSDictionary {
+                tempMin = main["temp_min"] as? Int
+                tempMax = main["temp_max"] as? Int
+                temp = main["temp"] as? Int
+                humidity = main["humidity"] as? Int
+            }
+            if let sys = json["sys"] as? NSDictionary {
+                sunrise = sys["sunrise"] as? Int
+                sunset = sys["sunset"] as? Int
+            }
+            
+            if let weatherArray = json["weather"] as? NSArray {
+                if let weather = weatherArray[0] as? NSDictionary {
+                    weatherDesc = weather["main"] as? String
+                }
             }
         }
         
         print(locationName!)
+        print(windSpeed!)
+        print(windDirection!)
+        print(tempMin!)
+        print(tempMax!)
+        print(temp!)
+        print(humidity!)
+        print(sunrise!)
+        print(sunset!)
+        print(weatherDesc!)
     }
 
 }

@@ -53,6 +53,9 @@ class WeatherViewController: UIViewController {
             if let wind = json["wind"] as? NSDictionary {
                 windSpeed = wind["speed"] as? Double
                 windDirection = wind["deg"] as? Int
+                if (windDirection == nil) {
+                    windDirection = 0
+                }
             }
             if let main = json["main"] as? NSDictionary {
                 tempMin = main["temp_min"] as? Int

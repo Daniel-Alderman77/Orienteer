@@ -30,7 +30,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func viewWillDisappear(animated: Bool) {
         // Stop updating location
         super.viewWillDisappear(animated)
-        locManager.stopUpdatingHeading()
+        locManager.startUpdatingLocation()
+        
+        locManager.stopUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +58,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             case .Restricted, .Denied:
                 return false
         }
+    }
+    
+    func locManager(didUpdateLocations locations: [AnyObject]!) {
+        let locValue : CLLocationCoordinate2D = locManager.location!.coordinate;
+        let long = locValue.longitude;
+        let lat = locValue.latitude;
+        print(long);
+        print(lat);
     }
 
     // MARK: Outlets

@@ -18,7 +18,8 @@ class WeatherViewController: UIViewController {
         let getRequest = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             let response = (NSString(data: data!, encoding: NSUTF8StringEncoding))
             print(response)
-            self.getData(response)
+            let dictionary = self.getData(response)
+            print(dictionary)
         }
         getRequest.resume()
         
@@ -29,7 +30,7 @@ class WeatherViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func getData(response: NSString?) {
+    func getData(response: NSString?)-> [String:Any] {
         let jsonData = response!.dataUsingEncoding(NSUTF8StringEncoding)
         
         var locationName: String?
@@ -80,16 +81,22 @@ class WeatherViewController: UIViewController {
             }
         }
         
-        print(locationName!)
-        print(windSpeed!)
-        print(windDirection!)
-        print(tempMin!)
-        print(tempMax!)
-        print(temp!)
-        print(humidity!)
-        print(sunrise!)
-        print(sunset!)
-        print(weatherDesc!)
+    
+        
+        let dictionary: [String:Any] = [
+            "locationName": (locationName)!,
+            "windSpeed":(windSpeed)!,
+            "windDirection":(windDirection)!,
+            "tempMin":(tempMin)!,
+            "tempMax":(tempMax)!,
+            "temp":(temp)!,
+            "humidity":(humidity)!,
+            "sunrise":(sunrise)!,
+            "sunset":(sunset)!,
+            "weatherDesc":(weatherDesc)!
+        ]
+        
+        return dictionary
     }
 
 }

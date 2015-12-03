@@ -10,19 +10,16 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    @IBOutlet weak var weatherDescLabel: UILabel!
+    
+    override func viewDidAppear(animated: Bool) {
         let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?lat=53.8073&lon=-1.5517&appid=2de143494c0b295cca9337e1e96b00e0&units=metric")
         
-        let getRequest = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            let response = (NSString(data: data!, encoding: NSUTF8StringEncoding))
-            print(response)
-            let dictionary = self.getData(response)
-            print(dictionary)
-        }
-        getRequest.resume()
+        let response = String(data:NSData(contentsOfURL: url!)!, encoding: NSUTF8StringEncoding)
         
+        let dictionary = self.getData(response!)
+        print(dictionary)
+        self.weatherDescLabel.text = String(dictionary["weatherDesc"]!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,8 +27,8 @@ class WeatherViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func getData(response: NSString?)-> [String:Any] {
-        let jsonData = response!.dataUsingEncoding(NSUTF8StringEncoding)
+    func getData(response: NSString) -> [String:Any] {
+        let jsonData = response.dataUsingEncoding(NSUTF8StringEncoding)
         
         var locationName: String?
         var windSpeed: Double?
@@ -81,8 +78,6 @@ class WeatherViewController: UIViewController {
             }
         }
         
-    
-        
         let dictionary: [String:Any] = [
             "locationName": (locationName)!,
             "windSpeed":(windSpeed)!,
@@ -98,5 +93,4 @@ class WeatherViewController: UIViewController {
         
         return dictionary
     }
-
 }

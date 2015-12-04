@@ -60,21 +60,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func locManager(didUpdateLocations locations: [AnyObject]!) {
-        let locValue : CLLocationCoordinate2D = locManager.location!.coordinate;
-        let long = locValue.longitude;
-        let lat = locValue.latitude;
-        print(long);
-        print(lat);
+    func something(didUpdateLocations locations: [AnyObject]!)->NSArray {
+        
+        let locValue : CLLocationCoordinate2D = locManager.location!.coordinate
+        let long = locValue.longitude
+        let lat = locValue.latitude
+        let locArray = [lat, long]
+        return locArray
+        
+        
     }
 
     // MARK: Outlets
     
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
+            let locArray = something(didUpdateLocations: [""])
             mapView.mapType = .Satellite
             mapView.pitchEnabled = false
-            let location = CLLocationCoordinate2D(latitude: 53.8073, longitude: -1.5517)
+            let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(locArray[0] as! NSNumber), longitude: CLLocationDegrees(locArray[1] as! NSNumber))
             let region = MKCoordinateRegionMakeWithDistance(location, 1000.0, 1000.0)
             mapView.setRegion(region, animated: true)
             let dropPin = MKPointAnnotation()

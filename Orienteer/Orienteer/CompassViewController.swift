@@ -7,19 +7,83 @@
 //
 
 import UIKit
+import CoreLocation
 
-class CompassViewController: UIViewController {
+class CompassViewController: UIViewController, CLLocationManagerDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    var locManager = CLLocationManager()
+    
+    var tryingToLocate = false
+
+    
+    @IBOutlet weak var latitudeLabel: UILabel!
+    @IBOutlet weak var longitudeLabel: UILabel!
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if !couldBeLocatable() {
+            print("Not authorized!")
+            return
+        }
+        
+        if tryingToLocate {
+            return
+        }
+        
+        tryingToLocate = true
+        
+        // Configure location manager and start updating
+        
+        locManager.delegate = self
+        locManager.desiredAccuracy = kCLLocationAccuracyBest
+        locManager.activityType = .Fitness
+        locManager.startUpdatingLocation()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        locManager.stopUpdatingHeading()
     }
-
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        print("Updated location")
+        
+        let location = locations.last as CLLocation!
+        
+        let coord = location.coordinate
+        latitudeLabel.text = String(coord.latitude)
+        longitudeLabel.text = String(coord.longitude)
+        
+        stopTrying()
+    }
+    
+    func couldBeLocatable() -> Bool {
+        
+        if !CLLocationManager.locationServicesEnabled() {
+            // Location services not enabled but might be in future
+            return true
+        }
+        
+        let status = CLLocationManager.authorizationStatus()
+        
+        switch status {
+        case .AuthorizedAlways, .AuthorizedWhenInUse:
+            return true
+        case .NotDetermined:
+            // Ask user for permission
+            locManager.requestWhenInUseAuthorization()
+            return true
+        case .Restricted, .Denied:
+            return false
+        }
+    }
+    
+    func stopTrying() {
+        locManager.stopUpdatingLocation()
+        tryingToLocate = false
+    }
 
 }
 

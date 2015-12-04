@@ -77,6 +77,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             let location = CLLocationCoordinate2D(latitude: 53.8073, longitude: -1.5517)
             let region = MKCoordinateRegionMakeWithDistance(location, 1000.0, 1000.0)
             mapView.setRegion(region, animated: true)
+            let dropPin = MKPointAnnotation()
+            dropPin.coordinate = location
+            mapView.addAnnotation(dropPin)
         }
     }
     

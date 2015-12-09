@@ -10,19 +10,20 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    @IBOutlet weak var descLabel: UILabel!
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
         let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?lat=53.8073&lon=-1.5517&appid=2de143494c0b295cca9337e1e96b00e0&units=metric")
         
         let getRequest = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             let response = (NSString(data: data!, encoding: NSUTF8StringEncoding))
-            print(response)
             let dictionary = self.getData(response)
-            print(dictionary)
+            
+            self.descLabel.text = String(dictionary["weatherDesc"]!)
         }
         getRequest.resume()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,7 +81,6 @@ class WeatherViewController: UIViewController {
                 }
             }
         }
-        
     
         
         let dictionary: [String:Any] = [
@@ -95,6 +95,8 @@ class WeatherViewController: UIViewController {
             "sunset":(sunset)!,
             "weatherDesc":(weatherDesc)!
         ]
+        
+        print(dictionary)
         
         return dictionary
     }

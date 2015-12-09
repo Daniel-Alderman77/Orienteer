@@ -348,6 +348,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" id="fVs-ln-9kf"/>
+                    <connections>
+                        <outlet property="descLabel" destination="23I-qN-OIk" id="KmL-HY-OM1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjR-tb-r5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

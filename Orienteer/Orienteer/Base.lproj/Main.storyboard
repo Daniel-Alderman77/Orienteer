@@ -358,6 +358,14 @@
                     <tabBarItem key="tabBarItem" title="Weather" id="fVs-ln-9kf"/>
                     <connections>
                         <outlet property="descLabel" destination="23I-qN-OIk" id="KmL-HY-OM1"/>
+                        <outlet property="locationLabel" destination="jnB-sn-IKV" id="jXA-Fv-FnA"/>
+                        <outlet property="maxTempLabel" destination="4zH-lq-BEg" id="NBm-Fr-gm3"/>
+                        <outlet property="minTempLabel" destination="nQp-Tr-iLK" id="OUY-1C-GQf"/>
+                        <outlet property="sunriseLabel" destination="ZJV-Oy-dso" id="VKb-La-Z7Q"/>
+                        <outlet property="sunsetLabel" destination="c0A-d4-Doj" id="OSe-71-oo9"/>
+                        <outlet property="tempLabel" destination="hrJ-zL-ORJ" id="BNM-Dr-ChF"/>
+                        <outlet property="windDirectionLabel" destination="hhF-6B-lOt" id="kbU-9a-NkF"/>
+                        <outlet property="windSpeedLabel" destination="1wU-PB-HoX" id="8Ut-t7-li6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjR-tb-r5I" userLabel="First Responder" sceneMemberID="firstResponder"/>

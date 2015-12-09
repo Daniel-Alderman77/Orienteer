@@ -11,6 +11,14 @@ import UIKit
 class WeatherViewController: UIViewController {
     
     @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var windDirectionLabel: UILabel!
+    @IBOutlet weak var sunriseLabel: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -21,6 +29,14 @@ class WeatherViewController: UIViewController {
         
         let dictionary = self.getData(response!)
         descLabel.text = String(dictionary["weatherDesc"]!)
+        tempLabel.text = String(dictionary["temp"]!)
+        locationLabel.text = String(dictionary["locationName"]!)
+        minTempLabel.text = String(dictionary["tempMin"]!)
+        maxTempLabel.text = String(dictionary["tempMax"]!)
+        windSpeedLabel.text = String(dictionary["windSpeed"]!)
+        windDirectionLabel.text = String(dictionary["windDirection"]!)
+        sunriseLabel.text = String(dictionary["sunrise"]!)
+        sunsetLabel.text = String(dictionary["sunset"]!)
     }
     
     override func didReceiveMemoryWarning() {

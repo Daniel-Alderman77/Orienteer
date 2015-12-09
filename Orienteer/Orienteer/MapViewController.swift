@@ -60,7 +60,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func something(didUpdateLocations locations: [AnyObject]!)->NSArray {
+    func getLocation(didUpdateLocations locations: [AnyObject]!)->NSArray {
         
         let locValue : CLLocationCoordinate2D = locManager.location!.coordinate
         let long = locValue.longitude
@@ -75,7 +75,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
-            let locArray = something(didUpdateLocations: [""])
+            let locArray = getLocation(didUpdateLocations: [""])
             mapView.mapType = .Satellite
             mapView.pitchEnabled = false
             let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(locArray[0] as! NSNumber), longitude: CLLocationDegrees(locArray[1] as! NSNumber))

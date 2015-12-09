@@ -15,6 +15,7 @@
 		BB6C6ABC1C0CB38300F0268D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C6ABA1C0CB38300F0268D /* LaunchScreen.storyboard */; };
 		BB6C6AC71C0CB38300F0268D /* OrienteerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AC61C0CB38300F0268D /* OrienteerTests.swift */; };
 		BB6C6AD21C0CB4EE00F0268D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */; };
+		E6B7B6B91C1857EB005F8C2D /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B7B6B81C1857EB005F8C2D /* CompassView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		BB6C6AC61C0CB38300F0268D /* OrienteerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrienteerTests.swift; sourceTree = "<group>"; };
 		BB6C6AC81C0CB38300F0268D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		E6B7B6B81C1857EB005F8C2D /* CompassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				BB6C6AAE1C0CB38300F0268D /* Orienteer */,
-				BB6C6AC51C0CB38300F0268D /* OrienteerTests */,
 				BB6C6AAD1C0CB38300F0268D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,12 +84,14 @@
 			children = (
 				BB6C6AAF1C0CB38300F0268D /* AppDelegate.swift */,
 				BB6C6AB11C0CB38300F0268D /* CompassViewController.swift */,
+				E6B7B6B81C1857EB005F8C2D /* CompassView.swift */,
 				BB6C6AB31C0CB38300F0268D /* MapViewController.swift */,
 				BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */,
 				BB6C6AB51C0CB38300F0268D /* Main.storyboard */,
 				BB6C6AB81C0CB38300F0268D /* Assets.xcassets */,
 				BB6C6ABA1C0CB38300F0268D /* LaunchScreen.storyboard */,
 				BB6C6ABD1C0CB38300F0268D /* Info.plist */,
+				BB6C6AC51C0CB38300F0268D /* OrienteerTests */,
 			);
 			path = Orienteer;
 			sourceTree = "<group>";
@@ -100,7 +103,7 @@
 				BB6C6AC81C0CB38300F0268D /* Info.plist */,
 			);
 			path = OrienteerTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -204,6 +207,7 @@
 			files = (
 				BB6C6AB41C0CB38300F0268D /* MapViewController.swift in Sources */,
 				BB6C6AD21C0CB4EE00F0268D /* WeatherViewController.swift in Sources */,
+				E6B7B6B91C1857EB005F8C2D /* CompassView.swift in Sources */,
 				BB6C6AB01C0CB38300F0268D /* AppDelegate.swift in Sources */,
 				BB6C6AB21C0CB38300F0268D /* CompassViewController.swift in Sources */,
 			);

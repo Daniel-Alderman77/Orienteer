@@ -15,6 +15,7 @@
 		BB6C6ABC1C0CB38300F0268D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C6ABA1C0CB38300F0268D /* LaunchScreen.storyboard */; };
 		BB6C6AC71C0CB38300F0268D /* OrienteerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AC61C0CB38300F0268D /* OrienteerTests.swift */; };
 		BB6C6AD21C0CB4EE00F0268D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */; };
+		BB781D861C1864D200366A34 /* UpdateLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB781D851C1864D200366A34 /* UpdateLocation.swift */; };
 		E6B7B6B91C1857EB005F8C2D /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B7B6B81C1857EB005F8C2D /* CompassView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		BB6C6AC61C0CB38300F0268D /* OrienteerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrienteerTests.swift; sourceTree = "<group>"; };
 		BB6C6AC81C0CB38300F0268D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		BB781D851C1864D200366A34 /* UpdateLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateLocation.swift; path = ../UpdateLocation.swift; sourceTree = "<group>"; };
 		E6B7B6B81C1857EB005F8C2D /* CompassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 		BB6C6AAE1C0CB38300F0268D /* Orienteer */ = {
 			isa = PBXGroup;
 			children = (
+				BB781D851C1864D200366A34 /* UpdateLocation.swift */,
 				BB6C6AAF1C0CB38300F0268D /* AppDelegate.swift */,
 				BB6C6AB11C0CB38300F0268D /* CompassViewController.swift */,
 				E6B7B6B81C1857EB005F8C2D /* CompassView.swift */,
@@ -208,6 +211,7 @@
 				BB6C6AB41C0CB38300F0268D /* MapViewController.swift in Sources */,
 				BB6C6AD21C0CB4EE00F0268D /* WeatherViewController.swift in Sources */,
 				E6B7B6B91C1857EB005F8C2D /* CompassView.swift in Sources */,
+				BB781D861C1864D200366A34 /* UpdateLocation.swift in Sources */,
 				BB6C6AB01C0CB38300F0268D /* AppDelegate.swift in Sources */,
 				BB6C6AB21C0CB38300F0268D /* CompassViewController.swift in Sources */,
 			);

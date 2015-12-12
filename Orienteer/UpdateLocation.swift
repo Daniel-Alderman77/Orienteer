@@ -13,6 +13,7 @@ class UpdateLocation: CLLocationManager {
     let requiredAccuracy: CLLocationAccuracy = 100.0
     
     var locManager = CLLocationManager()
+   
     
     var tryingToLocate = false
 
@@ -45,7 +46,7 @@ class UpdateLocation: CLLocationManager {
         locManager.stopUpdatingLocation()
     }
     
-    func getLocation(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]!)->NSArray{
+    func getLocation(locManager: CLLocationManager, didUpdateLocations locations: [AnyObject]!)->NSArray{
         
         let locValue : CLLocationCoordinate2D = locManager.location!.coordinate
         let long = locValue.longitude

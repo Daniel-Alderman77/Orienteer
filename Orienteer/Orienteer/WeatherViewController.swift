@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import MapKit
 
 class WeatherViewController: UIViewController {
+    let u = UpdateLocation()
+
+    
+    func getLocation()->NSArray{
+        let manager = u.locManager
+        let locArray = u.getLocation(manager, didUpdateLocations: [""])
+        return locArray
+    }
+
     
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var descLabel: UILabel!
@@ -24,7 +34,14 @@ class WeatherViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?lat=53.8073&lon=-1.5517&appid=2de143494c0b295cca9337e1e96b00e0&units=metric")
+        u.startUpdatingLocation()
+   
+        
+        let locArray = getLocation()
+        
+        let urlLoc = "http://api.openweathermap.org/data/2.5/weather?lat=\(locArray[0])&lon=\(locArray[1])&appid=2de143494c0b295cca9337e1e96b00e0&units=metric"
+        
+        let url = NSURL(string: urlLoc)
         
         let response = String(data:NSData(contentsOfURL: url!)!, encoding: NSUTF8StringEncoding)
         
@@ -38,6 +55,8 @@ class WeatherViewController: UIViewController {
         windDirectionLabel.text = String(dictionary["windDirection"]!)
         sunriseLabel.text = String(dictionary["sunrise"]!)
         sunsetLabel.text = String(dictionary["sunset"]!)
+        
+        u.stopUpdatingLocation()
     }
     
     override func didReceiveMemoryWarning() {

@@ -11,6 +11,12 @@ import MapKit
 
 class MapViewController: UIViewController {
     let u = UpdateLocation()
+    
+    func getLocation()->NSArray{
+        let manager = u.locManager
+        let locArray = u.getLocation(manager, didUpdateLocations: [""])
+        return locArray
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +24,10 @@ class MapViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        u.startUpdatingLocation()
+        
+        
+        
         // Update location when view is open
         print("Updating Location")
     
@@ -26,9 +36,9 @@ class MapViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         // Stop updating location
         super.viewWillDisappear(animated)
-        u.startLocating()
         
-        u.stopLocating()
+        
+        u.stopUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,8 +50,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
-            let manager = u.locManager
-            let locArray = u.getLocation(manager, didUpdateLocations: [""])
+            let locArray = getLocation()
             mapView.mapType = .Satellite
             mapView.pitchEnabled = false
             let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(locArray[0] as! NSNumber), longitude: CLLocationDegrees(locArray[1] as! NSNumber))

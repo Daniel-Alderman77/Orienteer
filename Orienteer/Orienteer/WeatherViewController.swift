@@ -49,7 +49,7 @@ class WeatherViewController: UIViewController {
         
         let weather = String(dictionary["weatherDesc"]!)
         switch weather {
-        case "Clear sky": weatherImage.image = UIImage(named: "sun.png")
+        case "Clear": weatherImage.image = UIImage(named: "sun.png")
         case "Clouds": weatherImage.image = UIImage(named: "clouds.png")
         case "Rain": weatherImage.image = UIImage(named: "rain.png")
         case "Thunderstorm": weatherImage.image = UIImage(named: "thunder.png")

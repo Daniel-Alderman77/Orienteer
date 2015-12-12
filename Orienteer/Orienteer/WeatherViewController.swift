@@ -46,6 +46,18 @@ class WeatherViewController: UIViewController {
         let response = String(data:NSData(contentsOfURL: url!)!, encoding: NSUTF8StringEncoding)
         
         let dictionary = self.getData(response!)
+        
+        let weather = String(dictionary["weatherDesc"]!)
+        switch weather {
+        case "Clear sky": weatherImage.image = UIImage(named: "sun.png")
+        case "Clouds": weatherImage.image = UIImage(named: "clouds.png")
+        case "Rain": weatherImage.image = UIImage(named: "rain.png")
+        case "Thunderstorm": weatherImage.image = UIImage(named: "thunder.png")
+        case "Snow": weatherImage.image = UIImage(named: "snow.png")
+        case "Mist": weatherImage.image = UIImage(named: "mist.png")
+        default: break
+        }
+        
         descLabel.text = String(dictionary["weatherDesc"]!)
         tempLabel.text = String(dictionary["temp"]!)
         locationLabel.text = String(dictionary["locationName"]!)

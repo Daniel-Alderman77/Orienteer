@@ -17,20 +17,12 @@ class MapViewController: UIViewController {
         let locArray = u.getLocation(manager, didUpdateLocations: [""])
         return locArray
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
     
     override func viewDidAppear(animated: Bool) {
         u.startUpdatingLocation()
         
-        
-        
         // Update location when view is open
         print("Updating Location")
-    
     }
     
     override func viewWillDisappear(animated: Bool) {

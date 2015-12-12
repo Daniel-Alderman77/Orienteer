@@ -10,6 +10,7 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
+    @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!

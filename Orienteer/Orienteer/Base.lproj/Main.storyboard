@@ -349,6 +349,7 @@
                         <outlet property="sunriseLabel" destination="ZJV-Oy-dso" id="VKb-La-Z7Q"/>
                         <outlet property="sunsetLabel" destination="c0A-d4-Doj" id="OSe-71-oo9"/>
                         <outlet property="tempLabel" destination="hrJ-zL-ORJ" id="BNM-Dr-ChF"/>
+                        <outlet property="weatherImage" destination="tW9-xK-YMw" id="dDb-H6-Sfi"/>
                         <outlet property="windDirectionLabel" destination="hhF-6B-lOt" id="kbU-9a-NkF"/>
                         <outlet property="windSpeedLabel" destination="1wU-PB-HoX" id="8Ut-t7-li6"/>
                     </connections>

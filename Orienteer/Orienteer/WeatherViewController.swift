@@ -61,12 +61,12 @@ class WeatherViewController: UIViewController {
         descLabel.text = String(dictionary["weatherDesc"]!)
         tempLabel.text = String(dictionary["temp"]!)
         locationLabel.text = String(dictionary["locationName"]!)
-        minTempLabel.text = String(dictionary["tempMin"]!)
-        maxTempLabel.text = String(dictionary["tempMax"]!)
-        windSpeedLabel.text = String(dictionary["windSpeed"]!)
-        windDirectionLabel.text = String(dictionary["windDirection"]!)
-        sunriseLabel.text = String(dictionary["sunrise"]!)
-        sunsetLabel.text = String(dictionary["sunset"]!)
+        minTempLabel.text = "Min: " + String(dictionary["tempMin"]!)
+        maxTempLabel.text = "Max: " + String(dictionary["tempMax"]!)
+        windSpeedLabel.text = "Speed: " + String(dictionary["windSpeed"]!)
+        windDirectionLabel.text = "Direction: " + String(dictionary["windDirection"]!)
+        sunriseLabel.text = "Sunrise: " + String(dictionary["sunrise"]!)
+        sunsetLabel.text = "Sunset: " + String(dictionary["sunset"]!)
         
         u.stopUpdatingLocation()
     }

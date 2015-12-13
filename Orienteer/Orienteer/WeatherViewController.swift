@@ -11,7 +11,7 @@ import MapKit
 
 class WeatherViewController: UIViewController {
     let u = UpdateLocation()
-
+    var windDirectionDesc = ""
     
     func getLocation()->NSArray{
         let manager = u.locManager
@@ -81,7 +81,7 @@ class WeatherViewController: UIViewController {
         
         var locationName: String?
         var windSpeed: Double?
-        var windDirection: Int?
+        var windDirection: Double?
         var tempMin: Int?
         var tempMax: Int?
         var temp: Int?
@@ -92,6 +92,9 @@ class WeatherViewController: UIViewController {
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "HH:mm"
+
+            
+        
         
         if let json: NSDictionary = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
             if let name = json["name"] as? String {
@@ -99,10 +102,7 @@ class WeatherViewController: UIViewController {
             }
             if let wind = json["wind"] as? NSDictionary {
                 windSpeed = wind["speed"] as? Double
-                windDirection = wind["deg"] as? Int
-                if (windDirection == nil) {
-                    windDirection = 0
-                }
+                windDirection = wind["deg"] as? Double
             }
             if let main = json["main"] as? NSDictionary {
                 tempMin = main["temp_min"] as? Int
@@ -126,12 +126,13 @@ class WeatherViewController: UIViewController {
                 }
             }
         }
-    
         
+        let windDirection1 = getWindDirection(windDirection!)
+    
         let dictionary: [String:Any] = [
             "locationName": (locationName)!,
             "windSpeed":(windSpeed)!,
-            "windDirection":(windDirection)!,
+            "windDirection":(windDirection1),
             "tempMin":(tempMin)!,
             "tempMax":(tempMax)!,
             "temp":(temp)!,
@@ -142,6 +143,43 @@ class WeatherViewController: UIViewController {
         ]
         
         return dictionary
+    }
+    
+    func getWindDirection(windDegree:Double)->String{
+        switch (windDegree){
+        case (0...22.5):
+            windDirectionDesc = "N"
+            break
+        case (22.5...67.5):
+            windDirectionDesc = "NE"
+            break
+        case (67.5...112.5):
+            windDirectionDesc = "E"
+            break
+        case (112.5...157.5):
+            windDirectionDesc = "SE"
+            break
+        case (157.5...202.5):
+            windDirectionDesc = "S"
+            break
+        case (202.5...247.5):
+            windDirectionDesc = "SW"
+            break
+        case (247.5...292.5):
+            windDirectionDesc = "W"
+            break
+        case (292.5...337.5):
+            windDirectionDesc = "NW"
+            break
+        case (337.5...360):
+            windDirectionDesc = "N"
+            break
+        default:
+            windDirectionDesc = "No data"
+        }
+        return windDirectionDesc
+        
+        
     }
 
 }

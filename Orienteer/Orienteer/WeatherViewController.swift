@@ -11,7 +11,7 @@ import MapKit
 
 class WeatherViewController: UIViewController {
     let u = UpdateLocation()
-    var windDirectionDesc = ""
+   
     
     func getLocation()->NSArray{
         let manager = u.locManager
@@ -146,6 +146,7 @@ class WeatherViewController: UIViewController {
     }
     
     func getWindDirection(windDegree:Double)->String{
+        var windDirectionDesc = ""
         switch (windDegree){
         case (0...22.5):
             windDirectionDesc = "N"

@@ -53,8 +53,8 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
         let location = locations.last as CLLocation!
         
         let coord = location.coordinate
-        latitudeLabel.text = String(coord.latitude)
-        longitudeLabel.text = String(coord.longitude)
+        latitudeLabel.text = String(round(coord.latitude))
+        longitudeLabel.text = String(round(coord.longitude))
         
         stopTrying()
     }

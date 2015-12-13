@@ -10,16 +10,15 @@ import UIKit
 import MapKit
 
 class WeatherViewController: UIViewController {
-    let u = UpdateLocation()
+    let u = UpdateLocation() //make an instance of the UpdateLocation class
    
     
-    func getLocation()->NSArray{
+    func getManager()->CLLocationManager{ //since a function is needed to call UpdateLocation's locManager.
         let manager = u.locManager
-        let locArray = u.getLocation(manager, didUpdateLocations: [""])
-        return locArray
+        return manager
     }
 
-    
+    //creating outlets for the different labels
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
@@ -31,23 +30,24 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var sunriseLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
     
+    //when view appears the code inside will be executed
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        u.startUpdatingLocation()
-   
+        u.startUpdatingLocation() //get the current location
+        let manager = getManager() //create a location manager
         
-        let locArray = getLocation()
+        let locArray = u.getLocation(manager, didUpdateLocations: [""]) //call the function in UpdateLocation to get the coordinates for latitude and longitude.
         
-        let urlLoc = "http://api.openweathermap.org/data/2.5/weather?lat=\(locArray[0])&lon=\(locArray[1])&appid=2de143494c0b295cca9337e1e96b00e0&units=metric"
+        let urlLoc = "http://api.openweathermap.org/data/2.5/weather?lat=\(locArray[0])&lon=\(locArray[1])&appid=2de143494c0b295cca9337e1e96b00e0&units=metric" //add the lat and lot to the url
         
         let url = NSURL(string: urlLoc)
         
         let response = String(data:NSData(contentsOfURL: url!)!, encoding: NSUTF8StringEncoding)
         
-        let dictionary = self.getData(response!)
+        let dictionary = self.getData(response!) //the getData function returns a dictionary
         
-        let weather = String(dictionary["weatherDesc"]!)
+        let weather = String(dictionary["weatherDesc"]!) //creating a switch for the weather description so that different images are shown depending on the description.
         switch weather {
         case "Clear": weatherImage.image = UIImage(named: "sun.png")
         case "Clouds": weatherImage.image = UIImage(named: "clouds.png")
@@ -57,7 +57,7 @@ class WeatherViewController: UIViewController {
         case "Mist": weatherImage.image = UIImage(named: "mist.png")
         default: break
         }
-        
+        //the labels get their input.
         descLabel.text = String(dictionary["weatherDesc"]!)
         tempLabel.text = String(dictionary["temp"]!)
         locationLabel.text = String(dictionary["locationName"]!)
@@ -68,7 +68,7 @@ class WeatherViewController: UIViewController {
         sunriseLabel.text = "Sunrise: " + String(dictionary["sunrise"]!)
         sunsetLabel.text = "Sunset: " + String(dictionary["sunset"]!)
         
-        u.stopUpdatingLocation()
+        u.stopUpdatingLocation() //stop locating
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,7 +76,7 @@ class WeatherViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func getData(response: NSString?)-> [String:Any] {
+    func getData(response: NSString?)-> [String:Any] { //a function to get the data from the weather API
         let jsonData = response!.dataUsingEncoding(NSUTF8StringEncoding)
         
         var locationName: String?
@@ -95,7 +95,7 @@ class WeatherViewController: UIViewController {
 
             
         
-        
+        //taking the variables from a NSDictionary and saving them.
         if let json: NSDictionary = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
             if let name = json["name"] as? String {
                 locationName = name
@@ -127,9 +127,9 @@ class WeatherViewController: UIViewController {
             }
         }
         
-        let windDirection1 = getWindDirection(windDirection!)
+        let windDirection1 = getWindDirection(windDirection!) //use the getWindDirection function to convert the wind direction to a string describing the direction (it is originally a number describing the degrees)
     
-        let dictionary: [String:Any] = [
+        let dictionary: [String:Any] = [ //creating a dictionary with all of the essential variables.
             "locationName": (locationName)!,
             "windSpeed":(windSpeed)!,
             "windDirection":(windDirection1),
@@ -142,10 +142,10 @@ class WeatherViewController: UIViewController {
             "weatherDesc":(weatherDesc)!
         ]
         
-        return dictionary
+        return dictionary //returning it
     }
     
-    func getWindDirection(windDegree:Double)->String{
+    func getWindDirection(windDegree:Double)->String{ //function to convert the wind degrees to a readable string describing wind direction. Make use of range in the switch.
         var windDirectionDesc = ""
         switch (windDegree){
         case (0...22.5):

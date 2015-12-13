@@ -145,7 +145,7 @@ class WeatherViewController: UIViewController {
         return dictionary //returning it
     }
     
-    func getWindDirection(windDegree:Double)->String{ //function to convert the wind degrees to a readable string describing wind direction. Make use of range in the switch.
+    func getWindDirection(windDegree:Double)->String{ //function to convert the wind degrees to a readable string describing wind direction. Make use of ranges in the cases in the switch.
         var windDirectionDesc = ""
         switch (windDegree){
         case (0...22.5):
@@ -176,7 +176,7 @@ class WeatherViewController: UIViewController {
             windDirectionDesc = "N"
             break
         default:
-            windDirectionDesc = "No data"
+            windDirectionDesc = "No data" //capturing if the wind direction is nil.
         }
         return windDirectionDesc
         

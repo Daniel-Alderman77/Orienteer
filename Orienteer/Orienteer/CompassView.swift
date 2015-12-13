@@ -26,17 +26,29 @@ let π:CGFloat = CGFloat(M_PI)
         let startAngle: CGFloat = 0
         let endAngle: CGFloat = 2 * π
         
-        // Create path
-        let path = UIBezierPath(arcCenter: center,
+        // Create circle path
+        let circlePath = UIBezierPath(arcCenter: center,
             radius: radius/2 - circleWidth/2,
             startAngle: startAngle,
             endAngle: endAngle,
             clockwise: true)
         
-        path.lineWidth = circleWidth
+        // Centre of circle
+        let circleCentre = CGPointMake(150, 0.0)
+        
+        // Create line path
+        let linePath: UIBezierPath = UIBezierPath()
+        linePath.moveToPoint(CGPointMake(150, 75))
+        linePath.addLineToPoint(circleCentre)
+        
+        circlePath.lineWidth = circleWidth
         compassColor.setStroke()
         
+        linePath.lineWidth = 3
+        
         // Draw path
-        path.stroke()
+        circlePath.stroke()
+        linePath.stroke()
+        
     }
 }

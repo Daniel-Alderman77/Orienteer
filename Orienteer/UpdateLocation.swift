@@ -17,34 +17,6 @@ class UpdateLocation: CLLocationManager {
     
     var tryingToLocate = false
 
-
-    func couldBeLocatable() -> Bool {
-        if !CLLocationManager.locationServicesEnabled() {
-            // Location services not enabled but might be in future
-            return true
-        }
-        
-        let status = CLLocationManager.authorizationStatus()
-        
-        switch status {
-        case .AuthorizedAlways, .AuthorizedWhenInUse:
-            return true
-        case .NotDetermined:
-            // Ask user for permission
-            locManager.requestWhenInUseAuthorization()
-            return true
-        case .Restricted, .Denied:
-            return false
-        }
-    }
-    func startLocating(){
-    
-        locManager.startUpdatingLocation()
-    }
-    
-    func stopLocating(){
-        locManager.stopUpdatingLocation()
-    }
     
     func getLocation(locManager: CLLocationManager, didUpdateLocations locations: [AnyObject]!)->NSArray{
         

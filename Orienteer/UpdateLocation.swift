@@ -13,10 +13,7 @@ class UpdateLocation: CLLocationManager {
     let requiredAccuracy: CLLocationAccuracy = 100.0
     
     var locManager = CLLocationManager()
-   
-    
-    var tryingToLocate = false
-
+    var locHeading = CLHeading()
     
     func getLocation(locManager: CLLocationManager, didUpdateLocations locations: [AnyObject]!)->NSArray{
         
@@ -27,4 +24,14 @@ class UpdateLocation: CLLocationManager {
         return locArray
     }
 
+    func getDirection(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) -> CLLocationDirection{
+        let heading = newHeading.magneticHeading
+        return heading
+    }
+    
+    func getHeading() -> Double {
+        let direction: CLLocationDirection = getDirection(locManager, didUpdateHeading: locHeading)
+        let directionInRadians = direction / 180.0 * M_PI;
+        return directionInRadians
+    }
 }

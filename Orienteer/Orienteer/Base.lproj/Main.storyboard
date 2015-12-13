@@ -86,7 +86,7 @@
                             <constraint firstItem="q3v-6p-bjl" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="vWy-bp-lGK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Compass" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Compass" image="CompassTab" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="latitudeLabel" destination="n09-Pl-HiU" id="diT-DU-g25"/>
                         <outlet property="longitudeLabel" destination="Qgz-xF-g5e" id="Efm-uV-p20"/>
@@ -120,7 +120,7 @@
                             <constraint firstItem="RNV-6f-Thz" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="tFu-yX-o50"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="MapTab" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="mapView" destination="RNV-6f-Thz" id="oya-cf-cug"/>
                     </connections>
@@ -304,7 +304,7 @@
                             <constraint firstItem="YvL-gg-SLo" firstAttribute="centerX" secondItem="omR-Ty-BCf" secondAttribute="centerX" id="gsm-Vm-4HS"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Weather" id="fVs-ln-9kf"/>
+                    <tabBarItem key="tabBarItem" title="Weather" image="clouds" id="fVs-ln-9kf"/>
                     <connections>
                         <outlet property="descLabel" destination="23I-qN-OIk" id="KmL-HY-OM1"/>
                         <outlet property="locationLabel" destination="jnB-sn-IKV" id="jXA-Fv-FnA"/>
@@ -344,7 +344,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="CompassTab" width="22" height="21"/>
+        <image name="MapTab" width="10" height="21"/>
+        <image name="clouds" width="48" height="48"/>
     </resources>
 </document>

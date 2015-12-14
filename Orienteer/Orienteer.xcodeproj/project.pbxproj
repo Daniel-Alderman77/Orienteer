@@ -86,8 +86,8 @@
 			children = (
 				BB781D851C1864D200366A34 /* UpdateLocation.swift */,
 				BB6C6AAF1C0CB38300F0268D /* AppDelegate.swift */,
-				BB6C6AB11C0CB38300F0268D /* CompassViewController.swift */,
 				E6B7B6B81C1857EB005F8C2D /* CompassView.swift */,
+				BB6C6AB11C0CB38300F0268D /* CompassViewController.swift */,
 				BB6C6AB31C0CB38300F0268D /* MapViewController.swift */,
 				BB6C6AD11C0CB4EE00F0268D /* WeatherViewController.swift */,
 				BB6C6AB51C0CB38300F0268D /* Main.storyboard */,

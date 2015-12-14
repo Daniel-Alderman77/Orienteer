@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  CompassViewController.swift
 //  Orienteer
 //
 //  Created by Hannah Svensson on 2015-11-30.
@@ -21,6 +21,7 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
+        // Location services not authorized by the user
         if !couldBeLocatable() {
             print("Not authorized!")
             return
@@ -38,7 +39,6 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
         locManager.desiredAccuracy = kCLLocationAccuracyBest
         locManager.activityType = .Fitness
         locManager.startUpdatingLocation()
-        
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -46,6 +46,7 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
         locManager.stopUpdatingHeading()
     }
     
+    // Get Coordinates of the User's location
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("Updated location")
@@ -53,6 +54,8 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
         let location = locations.last as CLLocation!
         
         let coord = location.coordinate
+        
+        // Set to labels to show coordinates
         latitudeLabel.text = String(round(coord.latitude))
         longitudeLabel.text = String(round(coord.longitude))
         
@@ -80,10 +83,9 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Stop Updating location
     func stopTrying() {
         locManager.stopUpdatingLocation()
         tryingToLocate = false
     }
-
 }
-

@@ -12,15 +12,16 @@ let π:CGFloat = CGFloat(M_PI)
 
 @IBDesignable class CompassView: UIView {
     
+    // Define colour
     @IBInspectable var compassColor: UIColor = UIColor.darkGrayColor()
-    //let updateLocation = UpdateLocation()
     
+    // Overiding drawRect function to draw custom paths
     override func drawRect(rect: CGRect) {
-        //let headingAngle = updateLocation.getHeading()
-        //print(headingAngle)
         
+        // Define center of Cirlce
         let center = CGPoint(x:bounds.width/2, y: bounds.height/2)
         
+        // Define radius of circle
         let radius: CGFloat = max(bounds.width, bounds.height)
         
         // Thickness of cirlce
@@ -50,11 +51,11 @@ let π:CGFloat = CGFloat(M_PI)
         circlePath.lineWidth = circleWidth
         compassColor.setStroke()
         
+        // Path Width
         linePath.lineWidth = 3
         
         // Draw path
         circlePath.stroke()
         linePath.stroke()
-        
     }
 }

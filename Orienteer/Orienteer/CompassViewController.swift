@@ -15,7 +15,6 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
     
     var tryingToLocate = false
 
-    
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     
@@ -39,6 +38,7 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
         locManager.desiredAccuracy = kCLLocationAccuracyBest
         locManager.activityType = .Fitness
         locManager.startUpdatingLocation()
+        
     }
 
     override func viewWillDisappear(animated: Bool) {

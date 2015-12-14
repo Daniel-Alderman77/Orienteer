@@ -13,10 +13,11 @@ let π:CGFloat = CGFloat(M_PI)
 @IBDesignable class CompassView: UIView {
     
     @IBInspectable var compassColor: UIColor = UIColor.darkGrayColor()
-    let updateLocation = UpdateLocation()
+    //let updateLocation = UpdateLocation()
     
     override func drawRect(rect: CGRect) {
-        let headingAngle = UpdateLocation.getHeading
+        //let headingAngle = updateLocation.getHeading()
+        //print(headingAngle)
         
         let center = CGPoint(x:bounds.width/2, y: bounds.height/2)
         
@@ -37,13 +38,13 @@ let π:CGFloat = CGFloat(M_PI)
             clockwise: true)
         
         // Centre of circle
-        let circleCentre = CGPointMake(150, 0.0)
+        let circleCentre = CGPointMake(110, 0.0)
         
         // Create line path
         let linePath: UIBezierPath = UIBezierPath()
         
         // Draw path from the center of the circle to the direction the user is heading in
-        linePath.moveToPoint(CGPointMake(150, 75))
+        linePath.moveToPoint(CGPointMake(110, 75))
         linePath.addLineToPoint(circleCentre)
         
         circlePath.lineWidth = circleWidth

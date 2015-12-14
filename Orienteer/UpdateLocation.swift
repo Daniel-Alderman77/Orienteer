@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import MapKit
-class UpdateLocation: CLLocationManager {
+import CoreLocation
+
+class UpdateLocation: CLLocationManager, CLLocationManagerDelegate {
     
     let requiredAccuracy: CLLocationAccuracy = 100.0
     
@@ -24,14 +25,20 @@ class UpdateLocation: CLLocationManager {
         return locArray
     }
 
-    func getDirection(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) -> CLLocationDirection{
-        let heading = newHeading.magneticHeading
+    func getDirection(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) -> Double {
+        var heading = newHeading.magneticHeading
+        let heading2 = newHeading.trueHeading // Will have value of -1 if there is no location info
+        print("\(heading) \(heading2) ")
+        if heading2 >= 0 {
+            heading = heading2
+        }
         return heading
     }
     
     func getHeading() -> Double {
         let direction: CLLocationDirection = getDirection(locManager, didUpdateHeading: locHeading)
         let directionInRadians = direction / 180.0 * M_PI;
+        print(directionInRadians)
         return directionInRadians
     }
 }

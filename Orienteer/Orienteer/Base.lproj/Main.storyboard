@@ -18,18 +18,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q3v-6p-bjl">
-                                <rect key="frame" x="150" y="118" width="300" height="364"/>
+                                <rect key="frame" x="190" y="158" width="220" height="284"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTd-UJ-Iha" customClass="CompassView" customModule="Orienteer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="3XP-jn-HEu"/>
-                                            <constraint firstAttribute="height" constant="300" id="W4W-3H-BJ0"/>
+                                            <constraint firstAttribute="width" constant="220" id="3XP-jn-HEu"/>
+                                            <constraint firstAttribute="height" constant="220" id="W4W-3H-BJ0"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MvS-bw-Oc1">
-                                        <rect key="frame" x="0.0" y="300" width="300" height="32"/>
+                                        <rect key="frame" x="0.0" y="220" width="220" height="32"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a1-Cs-l1j">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="32"/>
@@ -42,9 +42,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n09-Pl-HiU">
-                                                <rect key="frame" x="100" y="0.0" width="200" height="32"/>
+                                                <rect key="frame" x="100" y="0.0" width="120" height="32"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="APZ-xS-59C"/>
+                                                    <constraint firstAttribute="width" constant="120" id="APZ-xS-59C"/>
                                                     <constraint firstAttribute="height" constant="32" id="JDh-Y4-2EB"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -54,9 +54,9 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKk-qd-R3u">
-                                        <rect key="frame" x="0.0" y="332" width="300" height="32"/>
+                                        <rect key="frame" x="0.0" y="252" width="220" height="32"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5M3-Ce-gRz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5M3-Ce-gRz">
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="Kkv-1H-4Ik"/>
@@ -65,11 +65,11 @@
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgz-xF-g5e">
-                                                <rect key="frame" x="120" y="0.0" width="180" height="32"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgz-xF-g5e">
+                                                <rect key="frame" x="120" y="0.0" width="100" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="Lfc-pl-MXS"/>
-                                                    <constraint firstAttribute="width" constant="180" id="Xxr-pN-M51"/>
+                                                    <constraint firstAttribute="width" constant="100" id="Xxr-pN-M51"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

@@ -32,7 +32,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var sunsetLabel: UILabel!
     
     // When view appears the code inside will be executed
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if !couldBeLocatable() {
@@ -43,19 +43,19 @@ class WeatherViewController: UIViewController {
         updateLocation.startUpdatingLocation() // Get the current location
         let manager = getManager() // Create a location manager
         
-        let locArray = updateLocation.getLocation(manager, didUpdateLocations: [""]) // Call the function in UpdateLocation to get the coordinates for latitude and longitude.
+        let locArray = updateLocation.getLocation(manager, didUpdateLocations: ["" as AnyObject]) // Call the function in UpdateLocation to get the coordinates for latitude and longitude.
         
         // RestFul URL
         let urlLoc = "http://api.openweathermap.org/data/2.5/weather?lat=\(locArray[0])&lon=\(locArray[1])&appid=2de143494c0b295cca9337e1e96b00e0&units=metric" // Add the lat and lot to the url
         
-        let url = NSURL(string: urlLoc)
+        let url = URL(string: urlLoc)
         
         // Store Rest response from as String
-        let response = String(data:NSData(contentsOfURL: url!)!, encoding: NSUTF8StringEncoding)
+        let response = String(data:try! Data(contentsOf: url!), encoding: String.Encoding.utf8)
         
-        let dictionary = self.getData(response!) // The getData function returns a dictionary
+        let dictionary = self.getData(response! as NSString?) // The getData function returns a dictionary
         
-        let weather = String(dictionary["weatherDesc"]!) // Creating a switch for the weather description so that different images are shown depending on the description.
+        let weather = String(describing: dictionary["weatherDesc"]!) // Creating a switch for the weather description so that different images are shown depending on the description.
         switch weather {
         case "Clear": weatherImage.image = UIImage(named: "sun.png")
         case "Clouds": weatherImage.image = UIImage(named: "clouds.png")
@@ -66,15 +66,15 @@ class WeatherViewController: UIViewController {
         default: break
         }
         // The labels get their input.
-        descLabel.text = String(dictionary["weatherDesc"]!)
-        tempLabel.text = String(dictionary["temp"]!)
-        locationLabel.text = String(dictionary["locationName"]!)
-        minTempLabel.text = "Min: " + String(dictionary["tempMin"]!)
-        maxTempLabel.text = "Max: " + String(dictionary["tempMax"]!)
-        windSpeedLabel.text = "Speed: " + String(dictionary["windSpeed"]!)
-        windDirectionLabel.text = "Direction: " + String(dictionary["windDirection"]!)
-        sunriseLabel.text = "Sunrise: " + String(dictionary["sunrise"]!)
-        sunsetLabel.text = "Sunset: " + String(dictionary["sunset"]!)
+        descLabel.text = String(describing: dictionary["weatherDesc"]!)
+        tempLabel.text = String(describing: dictionary["temp"]!)
+        locationLabel.text = String(describing: dictionary["locationName"]!)
+        minTempLabel.text = "Min: " + String(describing: dictionary["tempMin"]!)
+        maxTempLabel.text = "Max: " + String(describing: dictionary["tempMax"]!)
+        windSpeedLabel.text = "Speed: " + String(describing: dictionary["windSpeed"]!)
+        windDirectionLabel.text = "Direction: " + String(describing: dictionary["windDirection"]!)
+        sunriseLabel.text = "Sunrise: " + String(describing: dictionary["sunrise"]!)
+        sunsetLabel.text = "Sunset: " + String(describing: dictionary["sunset"]!)
         
         updateLocation.stopUpdatingLocation() //stop locating
     }
@@ -94,19 +94,19 @@ class WeatherViewController: UIViewController {
         let status = CLLocationManager.authorizationStatus()
         
         switch status {
-        case .AuthorizedAlways, .AuthorizedWhenInUse:
+        case .authorizedAlways, .authorizedWhenInUse:
             return true
-        case .NotDetermined:
+        case .notDetermined:
             // Ask user for permission
             locManager.requestWhenInUseAuthorization()
             return true
-        case .Restricted, .Denied:
+        case .restricted, .denied:
             return false
         }
     }
     
-    func getData(response: NSString?)-> [String:Any] { // A function to get the data from the weather API
-        let jsonData = response!.dataUsingEncoding(NSUTF8StringEncoding)
+    func getData(_ response: NSString?)-> [String:Any] { // A function to get the data from the weather API
+        let jsonData = response!.data(using: String.Encoding.utf8.rawValue)
         
         var locationName: String?
         var windSpeed: Double?
@@ -119,13 +119,13 @@ class WeatherViewController: UIViewController {
         var sunset: String?
         var weatherDesc: String?
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
 
             
         
         // Taking the variables from a NSDictionary and saving them.
-        if let json: NSDictionary = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
+        if let json: NSDictionary = try! JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
             if let name = json["name"] as? String {
                 locationName = name
             }
@@ -141,12 +141,12 @@ class WeatherViewController: UIViewController {
             }
             if let sys = json["sys"] as? NSDictionary {
                 let sunriseDouble = sys["sunrise"] as? Double
-                let sunriseDate = NSDate(timeIntervalSince1970: sunriseDouble!)
-                sunrise = dateFormatter.stringFromDate(sunriseDate)
+                let sunriseDate = Date(timeIntervalSince1970: sunriseDouble!)
+                sunrise = dateFormatter.string(from: sunriseDate)
                 
                 let sunsetDouble = sys["sunset"] as? Double
-                let sunsetDate = NSDate(timeIntervalSince1970: sunsetDouble!)
-                sunset = dateFormatter.stringFromDate(sunsetDate)
+                let sunsetDate = Date(timeIntervalSince1970: sunsetDouble!)
+                sunset = dateFormatter.string(from: sunsetDate)
             }
             
             if let weatherArray = json["weather"] as? NSArray {
@@ -174,7 +174,7 @@ class WeatherViewController: UIViewController {
         return dictionary
     }
     
-    func getWindDirection(windDegree:Double)->String{ // Function to convert the wind degrees to a readable string describing wind direction. Make use of ranges in the cases in the switch.
+    func getWindDirection(_ windDegree:Double)->String{ // Function to convert the wind degrees to a readable string describing wind direction. Make use of ranges in the cases in the switch.
         var windDirectionDesc = ""
         switch (windDegree){
         case (0...22.5):

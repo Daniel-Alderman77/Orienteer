@@ -18,7 +18,7 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         // Location services not authorized by the user
@@ -37,27 +37,27 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
         
         locManager.delegate = self
         locManager.desiredAccuracy = kCLLocationAccuracyBest
-        locManager.activityType = .Fitness
+        locManager.activityType = .fitness
         locManager.startUpdatingLocation()
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         locManager.stopUpdatingHeading()
     }
     
     // Get Coordinates of the User's location
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("Updated location")
         
         let location = locations.last as CLLocation!
         
-        let coord = location.coordinate
+        let coord = location?.coordinate
         
         // Set to labels to show coordinates
-        latitudeLabel.text = String(round(coord.latitude))
-        longitudeLabel.text = String(round(coord.longitude))
+        latitudeLabel.text = String(round((coord?.latitude)!))
+        longitudeLabel.text = String(round((coord?.longitude)!))
         
         stopTrying()
     }
@@ -72,13 +72,13 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
         let status = CLLocationManager.authorizationStatus()
         
         switch status {
-        case .AuthorizedAlways, .AuthorizedWhenInUse:
+        case .authorizedAlways, .authorizedWhenInUse:
             return true
-        case .NotDetermined:
+        case .notDetermined:
             // Ask user for permission
             locManager.requestWhenInUseAuthorization()
             return true
-        case .Restricted, .Denied:
+        case .restricted, .denied:
             return false
         }
     }

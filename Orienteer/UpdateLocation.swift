@@ -17,16 +17,16 @@ class UpdateLocation: CLLocationManager, CLLocationManagerDelegate {
     var locHeading = CLHeading()
     
     // Get coordinates for the location
-    func getLocation(locManager: CLLocationManager, didUpdateLocations locations: [AnyObject]!)->NSArray{
+    func getLocation(_ locManager: CLLocationManager, didUpdateLocations locations: [AnyObject]!)->NSArray{
         let locValue : CLLocationCoordinate2D = locManager.location!.coordinate
         let long = locValue.longitude
         let lat = locValue.latitude
         let locArray = [lat, long]
-        return locArray
+        return locArray as NSArray
     }
 
     // Get direction user is heading in
-    func getDirection(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) -> Double {
+    func getDirection(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) -> Double {
         var heading = newHeading.magneticHeading
         let heading2 = newHeading.trueHeading // Will have value of -1 if there is no location info
         print("\(heading) \(heading2) ")

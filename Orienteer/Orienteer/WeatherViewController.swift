@@ -121,8 +121,6 @@ class WeatherViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-
-            
         
         // Taking the variables from a NSDictionary and saving them.
         if let json: NSDictionary = try! JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
@@ -156,12 +154,12 @@ class WeatherViewController: UIViewController {
             }
         }
         
-        let windDirection1 = getWindDirection(windDirection!) // Use the getWindDirection function to convert the wind direction to a string describing the direction (it is originally a number describing the degrees)
+        let windDirectionStr = getWindDirection(windDirection!) // Use the getWindDirection function to convert the wind direction to a string describing the direction (it is originally a number describing the degrees)
     
         let dictionary: [String:Any] = [ // Creating a dictionary with all of the essential variables.
             "locationName": (locationName)!,
             "windSpeed":(windSpeed)!,
-            "windDirection":(windDirection1),
+            "windDirection":(windDirectionStr),
             "tempMin":(tempMin)!,
             "tempMax":(tempMax)!,
             "temp":(temp)!,
@@ -177,35 +175,35 @@ class WeatherViewController: UIViewController {
     func getWindDirection(_ windDegree:Double)->String{ // Function to convert the wind degrees to a readable string describing wind direction. Make use of ranges in the cases in the switch.
         var windDirectionDesc = ""
         switch (windDegree){
-        case (0...22.5):
-            windDirectionDesc = "N"
-            break
-        case (22.5...67.5):
-            windDirectionDesc = "NE"
-            break
-        case (67.5...112.5):
-            windDirectionDesc = "E"
-            break
-        case (112.5...157.5):
-            windDirectionDesc = "SE"
-            break
-        case (157.5...202.5):
-            windDirectionDesc = "S"
-            break
-        case (202.5...247.5):
-            windDirectionDesc = "SW"
-            break
-        case (247.5...292.5):
-            windDirectionDesc = "W"
-            break
-        case (292.5...337.5):
-            windDirectionDesc = "NW"
-            break
-        case (337.5...360):
-            windDirectionDesc = "N"
-            break
-        default:
-            windDirectionDesc = "No data" // Capturing if the wind direction is nil.
+            case (0...22.5):
+                windDirectionDesc = "N"
+                break
+            case (22.5...67.5):
+                windDirectionDesc = "NE"
+                break
+            case (67.5...112.5):
+                windDirectionDesc = "E"
+                break
+            case (112.5...157.5):
+                windDirectionDesc = "SE"
+                break
+            case (157.5...202.5):
+                windDirectionDesc = "S"
+                break
+            case (202.5...247.5):
+                windDirectionDesc = "SW"
+                break
+            case (247.5...292.5):
+                windDirectionDesc = "W"
+                break
+            case (292.5...337.5):
+                windDirectionDesc = "NW"
+                break
+            case (337.5...360):
+                windDirectionDesc = "N"
+                break
+            default:
+                windDirectionDesc = "No data" // Capturing if the wind direction is nil.
         }
         return windDirectionDesc
         

@@ -46,7 +46,7 @@ class WeatherViewController: UIViewController {
         let locArray = updateLocation.getLocation(manager, didUpdateLocations: ["" as AnyObject]) // Call the function in UpdateLocation to get the coordinates for latitude and longitude.
         
         // RestFul URL
-        let urlLoc = "http://api.openweathermap.org/data/2.5/weather?lat=\(locArray[0])&lon=\(locArray[1])&appid=2de143494c0b295cca9337e1e96b00e0&units=metric" // Add the lat and lot to the url
+        let urlLoc = "http://api.openweathermap.org/data/2.5/weather?lat=\(locArray[0])&lon=\(locArray[1])&appid=0d36745b5dd4db5c7bbd09da97846ff6&units=metric" // Add the lat and lot to the url
         
         let url = URL(string: urlLoc)
         
@@ -127,15 +127,29 @@ class WeatherViewController: UIViewController {
             if let name = json["name"] as? String {
                 locationName = name
             }
+            else {
+                print ("Could not deserialise data")
+                locationName = "Could not deserialise data"
+            }
             if let wind = json["wind"] as? NSDictionary {
                 windSpeed = wind["speed"] as? Double
                 windDirection = wind["deg"] as? Double
+            }
+            else {
+                windSpeed = 0
+                windDirection = 0
             }
             if let main = json["main"] as? NSDictionary {
                 tempMin = main["temp_min"] as? Int
                 tempMax = main["temp_max"] as? Int
                 temp = main["temp"] as? Int
                 humidity = main["humidity"] as? Int
+            }
+            else {
+                tempMin = 0
+                tempMax = 0
+                temp = 0
+                humidity = 0
             }
             if let sys = json["sys"] as? NSDictionary {
                 let sunriseDouble = sys["sunrise"] as? Double
@@ -146,11 +160,18 @@ class WeatherViewController: UIViewController {
                 let sunsetDate = Date(timeIntervalSince1970: sunsetDouble!)
                 sunset = dateFormatter.string(from: sunsetDate)
             }
+            else {
+                sunrise = "HH:mm"
+                sunset = "HH:mm"
+            }
             
             if let weatherArray = json["weather"] as? NSArray {
                 if let weather = weatherArray[0] as? NSDictionary {
                     weatherDesc = weather["main"] as? String
                 }
+            }
+            else {
+                weatherDesc = "No weather data available"
             }
         }
         

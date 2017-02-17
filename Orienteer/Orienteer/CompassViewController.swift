@@ -72,14 +72,14 @@ class CompassViewController: UIViewController, CLLocationManagerDelegate {
         let status = CLLocationManager.authorizationStatus()
         
         switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            return true
-        case .notDetermined:
-            // Ask user for permission
-            locManager.requestWhenInUseAuthorization()
-            return true
-        case .restricted, .denied:
-            return false
+            case .authorizedAlways, .authorizedWhenInUse:
+                return true
+            case .notDetermined:
+                // Ask user for permission
+                locManager.requestWhenInUseAuthorization()
+                return true
+            case .restricted, .denied:
+                return false
         }
     }
     

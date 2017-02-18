@@ -18,14 +18,17 @@ let π:CGFloat = CGFloat(M_PI)
     // Overiding drawRect function to draw custom paths
     override func draw(_ rect: CGRect) {
         
-        // Define center of Cirlce
+        // Define center of circle
         let center = CGPoint(x:bounds.width/2, y: bounds.height/2)
         
-        // Define radius of circle
-        let radius: CGFloat = max(bounds.width, bounds.height)
+        // Define diameter of circle
+        let diameter: CGFloat = max(bounds.width, bounds.height)
+        
+        // Define diameter of innner circle
+        let innnerDiameter: CGFloat = max(bounds.width - 20, bounds.height - 20)
         
         // Thickness of cirlce
-        let circleWidth: CGFloat = 5
+        let circleWidth: CGFloat = 4
         
         // Start angle and end angle of circle in radians
         let startAngle: CGFloat = 0
@@ -33,29 +36,45 @@ let π:CGFloat = CGFloat(M_PI)
         
         // Create circle path
         let circlePath = UIBezierPath(arcCenter: center,
-            radius: radius/2 - circleWidth/2,
-            startAngle: startAngle,
-            endAngle: endAngle,
-            clockwise: true)
+                                      radius: diameter / 2 - circleWidth / 2,
+                                      startAngle: startAngle,
+                                      endAngle: endAngle,
+                                      clockwise: true)
         
-        // Centre of circle
-        let circleCentre = CGPoint(x: 110, y: 0.0)
+        // Create circle path
+        let innerCirclePath = UIBezierPath(arcCenter: center,
+                                      radius: innnerDiameter / 2 - circleWidth / 2,
+                                      startAngle: startAngle,
+                                      endAngle: endAngle,
+                                      clockwise: true)
         
         // Create line path
         let linePath: UIBezierPath = UIBezierPath()
         
-        // Draw path from the center of the circle to the direction the user is heading in
-        linePath.move(to: CGPoint(x: 110, y: 75))
-        linePath.addLine(to: circleCentre)
+        let angleInDegrees: CGFloat = 200
+        let innnerRadius = innnerDiameter / 2
         
+        let x = center.x + (innnerRadius * cos(angleInDegrees * π / 180))
+        let y = center.y + (innnerRadius * sin(angleInDegrees * π / 180))
+        
+        print (center)
+        print (innnerRadius)
+        print (x, y)
+        
+        // Draw path from the center of the circle to the direction the user is heading in
+        linePath.move(to: CGPoint(x: x, y: y))
+        linePath.addLine(to: center)
+        
+        // Circle Width
         circlePath.lineWidth = circleWidth
         compassColor.setStroke()
         
         // Path Width
-        linePath.lineWidth = 3
+        linePath.lineWidth = 2
         
-        // Draw path
+        // Draw paths
         circlePath.stroke()
+        innerCirclePath.stroke()
         linePath.stroke()
     }
 }

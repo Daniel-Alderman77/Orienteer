@@ -146,7 +146,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="YvL-gg-SLo">
-                                <rect key="frame" x="30" y="236" width="315" height="194"/>
+                                <rect key="frame" x="30" y="236.5" width="315" height="193.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NL6-rn-kEr">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="75"/>

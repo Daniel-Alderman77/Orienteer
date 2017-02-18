@@ -9,6 +9,7 @@
 import UIKit
 
 let π:CGFloat = CGFloat(M_PI)
+let angleInDegrees: CGFloat = 200
 
 @IBDesignable class CompassView: UIView {
     
@@ -25,7 +26,7 @@ let π:CGFloat = CGFloat(M_PI)
         let diameter: CGFloat = max(bounds.width, bounds.height)
         
         // Define diameter of innner circle
-        let innnerDiameter: CGFloat = max(bounds.width - 20, bounds.height - 20)
+        let innerDiameter: CGFloat = max(bounds.width - 20, bounds.height - 20)
         
         // Thickness of cirlce
         let circleWidth: CGFloat = 4
@@ -43,7 +44,7 @@ let π:CGFloat = CGFloat(M_PI)
         
         // Create circle path
         let innerCirclePath = UIBezierPath(arcCenter: center,
-                                      radius: innnerDiameter / 2 - circleWidth / 2,
+                                      radius: innerDiameter / 2 - circleWidth / 2,
                                       startAngle: startAngle,
                                       endAngle: endAngle,
                                       clockwise: true)
@@ -51,15 +52,10 @@ let π:CGFloat = CGFloat(M_PI)
         // Create line path
         let linePath: UIBezierPath = UIBezierPath()
         
-        let angleInDegrees: CGFloat = 200
-        let innnerRadius = innnerDiameter / 2
+        let innerRadius = innerDiameter / 2
         
-        let x = center.x + (innnerRadius * cos(angleInDegrees * π / 180))
-        let y = center.y + (innnerRadius * sin(angleInDegrees * π / 180))
-        
-        print (center)
-        print (innnerRadius)
-        print (x, y)
+        let x = center.x + (innerRadius * cos(angleInDegrees * π / 180))
+        let y = center.y + (innerRadius * sin(angleInDegrees * π / 180))
         
         // Draw path from the center of the circle to the direction the user is heading in
         linePath.move(to: CGPoint(x: x, y: y))
